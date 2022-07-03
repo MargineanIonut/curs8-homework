@@ -21,11 +21,10 @@ public class CleaningProcedureEntity {
     @Min(0)
     private int duration;
 
-    @ManyToOne
-    private CleanupEntity room;
 
-    public CleaningProcedureEntity(String name, CleanupEntity room) {
+    public CleaningProcedureEntity(String name,int duration) {
         this.name = name;
-        this.room = room;
+        this.duration = duration;
+
     }
 }
