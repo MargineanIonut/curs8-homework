@@ -1,14 +1,15 @@
 package ro.fasttrackit.hotel.server.controller;
 
-import com.github.fge.jsonpatch.JsonPatch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpClientErrorException;
 import ro.fasttrackit.hotel.server.entity.RoomEntity;
 import ro.fasttrackit.hotel.server.model.RoomDTO;
 import ro.fasttrackit.hotel.server.service.RoomService;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+
+import static org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 
 @RestController
 @RequestMapping("rooms")
@@ -31,5 +32,10 @@ public class RoomController {
     @PatchMapping("{roomId}")
     RoomEntity updateRoom (@PathVariable int roomId, @RequestBody RoomEntity updatedRoom){
         return service.updateRoom(roomId, updatedRoom);
+    }
+
+    @DeleteMapping
+    RoomEntity deleteEntity(@PathVariable int id){
+        return service.deleteRoom(id).orElseThrow(()->new NoSuchElementException("Id:" +id+ " does not exist"));
     }
 }

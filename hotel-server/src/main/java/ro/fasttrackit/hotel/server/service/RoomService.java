@@ -45,6 +45,10 @@ public class RoomService {
     }
 
 
-
+    public  Optional<RoomEntity> deleteRoom(int id) {
+        var room = repository.findById(id);
+        room.ifPresent(repository::delete);
+        return room;
+    }
 }
 
