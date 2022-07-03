@@ -1,7 +1,6 @@
-package ro.fasttrackit.hotel.server.entity;
+package ro.fasttrackit.hotel.server.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,13 +11,11 @@ import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-@Entity
-@Table(name = "rooms")
 @Getter
 @Setter
-public class RoomEntity {
-    @Id
-    @GeneratedValue
+@AllArgsConstructor
+public class RoomDTO {
+
     private int id;
 
     @Min(0)
@@ -30,11 +27,4 @@ public class RoomEntity {
     @NotNull
     private String hotelName;
 
-    RoomEntity(){}
-
-    public RoomEntity(int number, int floor, String hotelName){
-        this.number = number;
-        this.floor = floor;
-        this.hotelName = hotelName;
-    }
 }
