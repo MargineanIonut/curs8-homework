@@ -1,11 +1,10 @@
 package ro.fasttrackit.hotel.server.controller;
 
+import com.github.fge.jsonpatch.JsonPatch;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
+import ro.fasttrackit.hotel.server.entity.RoomEntity;
 import ro.fasttrackit.hotel.server.model.RoomDTO;
 import ro.fasttrackit.hotel.server.service.RoomService;
 
@@ -29,4 +28,8 @@ public class RoomController {
                 .orElseThrow(()-> new RuntimeException("Could not find room with id " + roomId));
     }
 
+    @PatchMapping("{roomId}")
+    RoomEntity updateRoom (@PathVariable int roomId, @RequestBody RoomEntity updatedRoom){
+        return service.updateRoom(roomId, updatedRoom);
+    }
 }
