@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "cleanupprocess")
@@ -20,15 +21,16 @@ public class CleanupEntity {
     private LocalDate date;
 
     @NotNull
+    @OneToOne
     private CleaningProcedureEntity procedures;
-
 
     @ManyToOne
     private RoomEntity room;
 
     CleanupEntity(){}
 
-    public CleanupEntity(@NotNull CleaningProcedureEntity procedures, RoomEntity room) {
+    public CleanupEntity(LocalDate date ,@NotNull CleaningProcedureEntity procedures, RoomEntity room) {
+        this.date = date;
         this.procedures = procedures;
         this.room = room;
     }

@@ -22,9 +22,9 @@ public class CleaningProcedureEntity {
     private int duration;
 
     @ManyToOne
-    private RoomEntity room;
+    private CleanupEntity room;
 
-    public CleaningProcedureEntity(String name, RoomEntity room) {
+    public CleaningProcedureEntity(String name, CleanupEntity room) {
         this.name = name;
         this.room = room;
     }

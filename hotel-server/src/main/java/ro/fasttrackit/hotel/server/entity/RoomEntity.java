@@ -30,6 +30,5 @@ public class RoomEntity {
     @NotNull
     private String hotelName;
 
-    @ManyToMany
-    private List<CleanupEntity> cleanupList;
+    RoomEntity(){}
 }

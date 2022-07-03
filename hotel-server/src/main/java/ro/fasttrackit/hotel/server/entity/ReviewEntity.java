@@ -1,5 +1,6 @@
 package ro.fasttrackit.hotel.server.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +13,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "reviews")
 @Getter
 @Setter
+@AllArgsConstructor
 public class ReviewEntity {
     @Id
     @GeneratedValue
@@ -32,8 +34,10 @@ public class ReviewEntity {
 
     ReviewEntity(){}
 
-    public ReviewEntity(String message, RoomEntity room) {
+    public ReviewEntity(String message,Integer rating,String touristName, RoomEntity room) {
         this.message = message;
+        this.rating = rating;
+        this.touristName = touristName;
         this.room = room;
     }
 }
