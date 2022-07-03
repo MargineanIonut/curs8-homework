@@ -8,12 +8,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="hotel-server" />
       </profile>
-      <profile name="Annotation profile for hotel-server" enabled="true">
-        <sourceOutputDir name="hotel-server/target/generated-sources/annotations" />
-        <sourceTestOutputDir name="hotel-server/target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="curs8-homework" />
-      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="curs8-homework" target="17" />

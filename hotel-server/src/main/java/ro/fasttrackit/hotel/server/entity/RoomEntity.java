@@ -17,14 +17,13 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @Builder
-@AllArgsConstructor
 public class RoomEntity {
     @Id
     @GeneratedValue
     private int id;
 
-    @NotNull
-    private String number;
+    @Min(0)
+    private int number;
 
     @Min(0)
     private int floor;
@@ -33,4 +32,10 @@ public class RoomEntity {
     private String hotelName;
 
     RoomEntity(){}
+
+    public RoomEntity(int number, int floor, String hotelName){
+        this.number = number;
+        this.floor = floor;
+        this.hotelName = hotelName;
+    }
 }
